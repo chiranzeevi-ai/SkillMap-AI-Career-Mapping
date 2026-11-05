@@ -4,81 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillMap | Career Intelligence</title>
+    <title>SkillMap - Career Assessment</title>
     <style>
-        * { box-sizing: border-box; }
         body {
-            margin: 0;
+            background: #0b1020;
+            color: white;
             font-family: Arial, sans-serif;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #171f35;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 { color: #91aaff; }
+
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border-radius: 7px;
+            border: 1px solid #526080;
             background: #0b1020;
             color: white;
         }
-        header {
-            padding: 22px 8%;
-            border-bottom: 1px solid #29334b;
-            display: flex;
-            justify-content: space-between;
-        }
-        header h2 { margin: 0; color: #91aaff; }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
-        main {
-            max-width: 850px;
-            margin: 90px auto;
-            padding: 25px;
-            text-align: center;
-        }
-        .tag { color: #91aaff; letter-spacing: 3px; }
-        h1 { font-size: 48px; }
-        h1 span { color: #91aaff; }
-        p { color: #aab5cc; line-height: 1.7; }
-        .panel {
-            background: #171f35;
-            border: 1px solid #34415f;
-            border-radius: 18px;
-            padding: 30px;
-            margin-top: 40px;
-        }
+
         button {
+            margin-top: 25px;
+            padding: 14px;
+            width: 100%;
             background: #91aaff;
             border: none;
-            border-radius: 8px;
-            padding: 14px 25px;
+            border-radius: 7px;
             font-weight: bold;
-            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h2>SkillMap.</h2>
-        <nav>
-            <a href="/">Home</a>
-            <a href="#about">About</a>
-        </nav>
-    </header>
+<div class="container">
 
-    <main>
-        <div class="tag">AI-POWERED CAREER INTELLIGENCE</div>
-        <h1>Discover Your <span>Career Potential</span></h1>
-        <p>
-            Identify your skill gaps, understand industry
-            requirements and discover your ideal career path.
-        </p>
+    <h1>SkillMap</h1>
+    <h2>Student Skill Assessment</h2>
 
-        <section class="panel" id="about">
-            <h2>Build Your Future With SkillMap</h2>
-            <p>
-                Analyze your current skills and discover
-                what you need to learn for your dream career.
-            </p>
-            <button onclick="alert('Skill assessment module coming soon!')">
-                Get Started →
-            </button>
-        </section>
-    </main>
+    <p>Discover your career potential.</p>
+
+    <form action="/analyze" method="POST">
+
+        <label>Your Name</label>
+        <input type="text" name="name"
+               placeholder="Enter your name" required>
+
+        <label>Select Your Career</label>
+        <select name="career" required>
+            <option value="">Choose career</option>
+            <option>Python Developer</option>
+            <option>Data Analyst</option>
+            <option>Machine Learning Engineer</option>
+            <option>Web Developer</option>
+        </select>
+
+        <label>Your Current Skills</label>
+        <textarea name="skills" rows="4"
+                  placeholder="Python, SQL, Excel..."
+                  required></textarea>
+
+        <button type="submit">
+            Analyze My Skills
+        </button>
+
+    </form>
+
+</div>
 </body>
 </html>
