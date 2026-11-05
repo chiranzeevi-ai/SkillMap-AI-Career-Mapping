@@ -1,10 +1,12 @@
 
-from flask import Flask, render_template
-from flask import request
-
+from flask import Flask, render_template, request
 from models.skill_analyzer import analyze_skills
+from database.db import init_db, save_assessment
 
 app = Flask(__name__)
+
+# Initialize database
+init_db()
 
 
 @app.route("/")
@@ -26,6 +28,9 @@ def analyze():
         result = analyze_skills(career, skills)
     except ValueError:
         return "Invalid career selection.", 400
+
+    # Save assessment in SQLite
+    save_assessment(name, career, skills, result)
 
     return render_template(
         "result.html",
