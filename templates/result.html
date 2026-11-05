@@ -1,1 +1,91 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillMap Results</title>
+
+    <style>
+        body {
+            background: #0b1020;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #171f35;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 { color: #91aaff; }
+
+        .score {
+            font-size: 55px;
+            color: #65dfaa;
+            font-weight: bold;
+        }
+
+        li {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .matched { color: #65dfaa; }
+        .missing { color: #ff9b9b; }
+
+        a {
+            color: #91aaff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h1>SkillMap Report</h1>
+
+    <h2>Welcome, {{ name }}!</h2>
+
+    <p>Target Career: <strong>{{ career }}</strong></p>
+
+    <h2>Your Skill Match</h2>
+
+    <div class="score">
+        {{ result.percentage }}%
+    </div>
+
+    <h2>Matched Skills</h2>
+
+    <ul>
+        {% for skill in result.matched %}
+            <li class="matched">
+                ✓ {{ skill }}
+            </li>
+        {% else %}
+            <li>No matching skills found.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Missing Skills</h2>
+
+    <ul>
+        {% for skill in result.missing %}
+            <li class="missing">
+                ✗ {{ skill }}
+            </li>
+        {% else %}
+            <li>You matched all listed skills!</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/">← Back to Assessment</a>
+
+</div>
+</body>
+</html>
+
